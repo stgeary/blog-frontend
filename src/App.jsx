@@ -8,6 +8,34 @@ function Header() {
     </header>
   );
 }
+function Content() {
+  let posts = [
+    {
+      id: 1,
+      title: "Scott",
+      body: "Gutters created woooohoooo",
+      image: "nice.png",
+    },
+    {
+      id: 2,
+      title: "Scott",
+      body: "I need some gutters",
+      image: "___",
+    },
+    {
+      id: 3,
+      title: "Scott",
+      body: "Site made, no gutters though, me sad",
+      image: "___",
+    },
+  ];
+  return (
+    <>
+      <PostsNew />
+      <PostsIndex posts={posts} />
+    </>
+  );
+}
 
 function PostsNew() {
   return (
@@ -27,19 +55,18 @@ function PostsNew() {
 }
 
 function PostsIndex(props) {
-  console.log("The props are", props);
+  console.log(props);
+
   return (
-    <div id="posts-index">
-      <h1>All posts</h1>
-      {/* <p>The name is {props.name}</p> */}
-      <div className="posts">
-        <h2>Scott</h2>
-        <p>I GOT SOME GUTTERS IN HERE WOOOHOOOOOO</p>
-      </div>
-      <div className="posts">
-        <h2>Scott</h2>
-        <p>I need gutters NOWWWWWWW</p>
-      </div>
+    <div>
+      {/* Use map function with props.posts to create the posts dynamically */}
+      {props.posts.map(post => (
+        <div key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+          <img src={post.image} alt={post.title} />
+        </div>
+      ))}
     </div>
   );
 }
@@ -52,15 +79,7 @@ function Footer() {
   );
 }
 
-function Content() {
-  let name = "Test";
-  return (
-    <>
-      <PostsNew />
-      <PostsIndex name={name} />
-    </>
-  );
-}
+
 
 function App() {
   return (
