@@ -1,41 +1,7 @@
 import reactLogo from './assets/react.svg';
 import './App.css';
-
-function Header() {
-  return (
-    <header>
-      <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
-    </header>
-  );
-}
-function Content() {
-  let posts = [
-    {
-      id: 1,
-      title: "Scott",
-      body: "Gutters created woooohoooo",
-      image: "nice.png",
-    },
-    {
-      id: 2,
-      title: "Scott",
-      body: "I need some gutters",
-      image: "___",
-    },
-    {
-      id: 3,
-      title: "Scott",
-      body: "Site made, no gutters though, me sad",
-      image: "___",
-    },
-  ];
-  return (
-    <>
-      <PostsNew />
-      <PostsIndex posts={posts} />
-    </>
-  );
-}
+import {Header} from "./header";
+import {Content} from "./content";
 
 function PostsNew() {
   return (
