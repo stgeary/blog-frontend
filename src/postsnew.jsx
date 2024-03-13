@@ -9,7 +9,7 @@ export function PostsNew() {
           <div> 
             Author: <input type="text" />
           </div>
-          <button type="submit">Be judged</button>
+          <button type="submit">Post and be judged</button>
         </form>
       </div>
     );
