@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 export function PostsIndex(props) {
     console.log(props);
   
     return (
       <div>
-        {/* Use map function with props.posts to create the posts dynamically */}
         {props.posts.map(post => (
           <div key={post.id}>
             <h2>{post.title}</h2>
@@ -25,14 +25,3 @@ export function PostsIndex(props) {
       </div>
     );
   }
-  PostsIndex.propTypes = {
-    posts: PropTypes.arrayOf(
-      PropTypes.shape({
-        // eslint-disable-next-line no-undef
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        body: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  };
