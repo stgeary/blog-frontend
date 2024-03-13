@@ -76,6 +76,15 @@ footer{
   #posts-index img {
     width: 300px;
   }
-  
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
 
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
