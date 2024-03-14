@@ -3,35 +3,11 @@ import {PostsIndex} from "./postsindex"
 import axios from "axios";
 import { useState } from "react";
 import {useEffect} from "react";
+import {Modal} from "./Modal"
 
 export function Content() {
-    // let name = "Scott"
-    
-    // let posts = [];
-
-    // let posts = [
-    //     {
-    //       id: 1,
-    //       title: "___",
-    //       body: "___",
-    //       image: "___",
-    //     },
-    //     {
-    //       id: 2,
-    //       title: "___",
-    //       body: "___",
-    //       image: "___",
-    //     },
-    //     {
-    //       id: 3,
-    //       title: "___",
-    //       body: "___",
-    //       image: "___",
-    //     },
-    //   ];
-
-    
     const [posts, setPosts] = useState([]);
+    const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
 
     const handleIndexPosts = () => {
         axios.get("http://localhost:3000/posts.json").then((response) => {
@@ -40,13 +16,24 @@ export function Content() {
         });
     };
 
+    const handleShowPost = () => {
+        setIsPostsShowVisible(true);
+    }
+
+    const handleClose = () => {
+        setIsPostsShowVisible(false);
+      };
+
     useEffect(handleIndexPosts, []);
 
     return (
         <>
         <PostsNew />
         {/* <button onClick = {handleIndexPosts}>Load Posts</button> */}
-        <PostsIndex posts={posts}/>
+        <PostsIndex posts={posts} onShowPost={handleShowPost}/>
+        <Modal show={isPostsShowVisible} onClose={handleClose}>
+        <h1>TEST</h1>
+      </Modal>
       </>
     );
   }
