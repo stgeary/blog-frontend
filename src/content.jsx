@@ -32,6 +32,27 @@ export function Content() {
             setPosts([...posts, response.data]);
         });
       }
+      
+    const handleUpdatePost = (id, params) => {
+        axios.patch("http://localhost:3000/posts/" + id + ".json", params).then((response) => {
+          setPosts(
+            posts.map((post) => {
+              if (post.id === response.data.id) {
+                return response.data;
+              } else {
+                return post;
+              }
+            })
+          );
+        });
+      };
+    const handleDestroyPost = (id) => {
+        // eslint-disable-next-line no-unused-vars
+        axios.delete("http://localhost:3000/posts/" + id + ".json", id).then((response) => {
+            setPosts(posts.filter((post) => post.id !== id));
+            handleClose();
+          });
+    };
     useEffect(handleIndexPosts, []);
 
     return (
@@ -39,7 +60,7 @@ export function Content() {
         <PostsNew onCreatePost={handleCreatePost}/>
         <PostsIndex posts={posts} onShowPost={handleShowPost}/>
         <Modal show={isPostsShowVisible} onClose={handleClose}>
-            <PostsShow post = {currentPost} />
+            <PostsShow post = {currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost} />
       </Modal>
       </>
     );

@@ -31,6 +31,16 @@ body {
   min-height: 100vh;
 }
 
+input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  margin: 0.5em 0;
+  border: 5px rgb(249, 123, 13);
+  background-color: rgb(255, 140, 83) !important;
+  border-radius: 1em;
+}
+
 h1 {
   font-size: 2em;
   line-height: 1.1;
